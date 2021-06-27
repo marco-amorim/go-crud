@@ -1,7 +1,7 @@
 package main
 
 import (
-	"fmt"
+	"encoding/json"
 	"log"
 	"net/http"
 )
@@ -14,6 +14,11 @@ func main() {
 
 }
 
+type HelloWorldMessage struct {
+	Message string
+}
+
 func MyHandler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprint(w, "Hello World")
+	var helloMessage = HelloWorldMessage{"Hello World!"}
+	json.NewEncoder(w).Encode(helloMessage)
 }
