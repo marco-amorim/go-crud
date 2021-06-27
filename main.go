@@ -29,10 +29,10 @@ func main() {
 	port := ":1337"
 
 	movies = append(movies, Movie{ID: "1", Isbn: "43826", Title: "Movie 0", Director: &Director{Firstname: "FN 0", Lastname: "LN 0"}})
-	movies = append(movies, Movie{ID: "1", Isbn: "43827", Title: "Movie 1", Director: &Director{Firstname: "FN 1", Lastname: "LN 1"}})
-	movies = append(movies, Movie{ID: "1", Isbn: "43828", Title: "Movie 2", Director: &Director{Firstname: "FN 2", Lastname: "LN 2"}})
-	movies = append(movies, Movie{ID: "1", Isbn: "43829", Title: "Movie 3", Director: &Director{Firstname: "FN 3", Lastname: "LN 3"}})
-	movies = append(movies, Movie{ID: "1", Isbn: "43830", Title: "Movie 4", Director: &Director{Firstname: "FN 4", Lastname: "LN 4"}})
+	movies = append(movies, Movie{ID: "2", Isbn: "43827", Title: "Movie 1", Director: &Director{Firstname: "FN 1", Lastname: "LN 1"}})
+	movies = append(movies, Movie{ID: "3", Isbn: "43828", Title: "Movie 2", Director: &Director{Firstname: "FN 2", Lastname: "LN 2"}})
+	movies = append(movies, Movie{ID: "4", Isbn: "43829", Title: "Movie 3", Director: &Director{Firstname: "FN 3", Lastname: "LN 3"}})
+	movies = append(movies, Movie{ID: "5", Isbn: "43830", Title: "Movie 4", Director: &Director{Firstname: "FN 4", Lastname: "LN 4"}})
 
 	r.HandleFunc("/movies", getMovies).Methods("GET")
 	r.HandleFunc("/movies", createMovie).Methods("POST")
