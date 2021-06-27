@@ -25,7 +25,7 @@ type Director struct {
 var movies []Movie
 
 func main() {
-	r := mux.NewRouter()
+	router := mux.NewRouter()
 	port := ":1337"
 
 	movies = append(movies, Movie{ID: "1", Isbn: "43826", Title: "Movie 0", Director: &Director{Firstname: "FN 0", Lastname: "LN 0"}})
@@ -34,14 +34,14 @@ func main() {
 	movies = append(movies, Movie{ID: "4", Isbn: "43829", Title: "Movie 3", Director: &Director{Firstname: "FN 3", Lastname: "LN 3"}})
 	movies = append(movies, Movie{ID: "5", Isbn: "43830", Title: "Movie 4", Director: &Director{Firstname: "FN 4", Lastname: "LN 4"}})
 
-	r.HandleFunc("/movies", getMovies).Methods("GET")
-	r.HandleFunc("/movies", createMovie).Methods("POST")
-	r.HandleFunc("/movies/{id}", getMovie).Methods("GET")
-	r.HandleFunc("/movies/{id}", updateMovie).Methods("PUT")
-	r.HandleFunc("/movies/{id}", deleteMovie).Methods("DELETE")
+	router.HandleFunc("/movies", getMovies).Methods("GET")
+	router.HandleFunc("/movies", createMovie).Methods("POST")
+	router.HandleFunc("/movies/{id}", getMovie).Methods("GET")
+	router.HandleFunc("/movies/{id}", updateMovie).Methods("PUT")
+	router.HandleFunc("/movies/{id}", deleteMovie).Methods("DELETE")
 
 	fmt.Println("Starting server at port", port)
-	log.Fatal(http.ListenAndServe(port, r))
+	log.Fatal(http.ListenAndServe(port, router))
 }
 
 func updateMovie(writer http.ResponseWriter, request *http.Request) {
